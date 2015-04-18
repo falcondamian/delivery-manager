@@ -1,0 +1,8 @@
+<template name="new_clientes">
+    <div class="container">
+        <h3>Nuevo cliente</h3>
+        {{> form_clientes}}
+        <button type="button" class="btn btn-primary btn-xs" id="save">Guardar</button>
+        <a class="btn btn-default btn-xs" href="{{pathFor 'clientes' _id=this.ruta._id}}">Volver</a>
+    </div>
+</template>

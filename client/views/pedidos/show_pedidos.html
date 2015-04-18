@@ -1,0 +1,35 @@
+<template name="show_pedidos">
+    <div class="container">
+        <h3>Pedido</h3>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                    <p><strong>Hora :</strong><br>
+                    {{hora}}</p>
+                    <p><strong>Cliente :</strong><br>
+                    {{objetoCliente clienteId}}</p>
+                    <strong>Productos :</strong>
+                    <div class="table-responsive">
+                        <table class="table table-hover table-condensed table-bordered">
+                            <thead>                        
+                                <tr>
+                                    <th>Producto</th>
+                                    <th>Cantidad</th>      
+                                    <th>Observaciones</th>                      
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {{#each indexedArray productos}}
+                                <tr>
+                                    <td>{{objetoProducto producto}}</td>
+                                    <td>{{cantidad}}</td>  
+                                    <td>{{observaciones}}</td>                                   
+                                </tr>
+                            {{/each}}
+                            </tbody>
+                       </table>
+                    </div>
+            </div>
+        </div>
+        <a class="btn btn-default btn-xs" href="{{pathFor 'pedidos' _id=this.repartoId}}">Volver</a>
+    </div>
+</template>

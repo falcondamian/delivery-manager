@@ -1,0 +1,16 @@
+<template name="show_clientes">
+    <div class="container">
+        <h3>Cliente</h3>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                    <p><strong>Nombre :</strong><br>
+                    {{nombre}}</p>
+                    <p><strong>Dirección :</strong><br>
+                    {{direccion}}</p>
+                    <p><strong>Teléfono :</strong><br>
+                    {{telefono}}</p>
+            </div>
+        </div>
+        <a class="btn btn-default btn-xs" href="{{pathFor 'clientes' _id=this.rutaId}}">Volver</a>
+    </div>
+</template>

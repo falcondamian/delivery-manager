@@ -1,0 +1,44 @@
+<template name="form_reparto">
+    <form>
+        <div class="form-group {{errorClass 'fecha'}}">           
+            <label class="control-label" for="input_fecha">Fecha</label>
+            <div id="datetimepicker" class="input-group">
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+                <input id="input_fecha" class="form-control" type="text" value="{{formateaFecha fecha}}" placeholder="Fecha"/>                                                  
+            </div>
+            <span class="help-block">{{errorMessage 'fecha'}}</span>
+        </div>
+        <div class="form-group {{errorClass 'repartidorId'}}">     
+            <label class="control-label" for="input_repartidor">Repartidor</label>
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-user"></span>
+                </span>
+                <select class="form-control" id="input_repartidor" value="{{repartidorId}}">
+                    <option value="" selected>Seleccione repartidor</option>
+                    {{#each usuarios}}
+                        <option {{selected ../repartidorId _id}} value="{{_id}}">{{username}}</option>
+                    {{/each}}
+                </select>                
+            </div>
+            <span class="help-block">{{errorMessage 'repartidorId'}}</span>
+        </div>
+        <div class="form-group {{errorClass 'rutaId'}}">     
+            <label class="control-label" for="input_ruta">Ruta</label>
+            <div class="input-group">                        
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-map-marker"></span>
+                </span>
+                <select class="form-control" id="input_ruta" value="{{rutaId}}">       
+                    <option value="" selected>Seleccione ruta</option>
+                    {{#each rutas}}
+                        <option {{selected ../rutaId _id}} value="{{_id}}">{{nombre}}</option>
+                    {{/each}}            
+                </select>                
+            </div>
+            <span class="help-block">{{errorMessage 'rutaId'}}</span>           
+        </div>
+    </form>
+</template>

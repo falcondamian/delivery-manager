@@ -1,0 +1,19 @@
+<template name="pedido">
+  <div {{attributes}}>
+    <div class="pedido-content">
+      <h3><span class="glyphicon glyphicon-time"></span> {{hora}} <span class="glyphicon glyphicon-star"></span> {{objetoCliente clienteId}}</h3>
+      <p>     
+        <ul>
+        {{#each productos}}
+            <li>
+                {{cantidad}} 
+                {{objetoProducto producto}} 
+                ({{observaciones}})                        
+            </li>
+        {{/each}}
+        </ul>        
+        Entregado : <input type="checkbox" checked="{{entregado}}" name="checked">
+      </p>
+    </div>
+  </div>
+</template>

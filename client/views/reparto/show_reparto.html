@@ -1,0 +1,16 @@
+<template name="show_reparto">
+    <div class="container">
+        <h3>Reparto</h3>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                     <p><strong>Fecha :</strong><br>
+                    {{formateaFecha fecha}}</p>
+                    <p><strong>Repartidor :</strong><br>
+                    {{objetoUsuario repartidorId}}</p>
+                    <p><strong>Ruta :</strong><br>
+                    {{objetoRuta rutaId}}</p>
+            </div>
+        </div>
+        <a class="btn btn-default btn-xs" href="{{pathFor 'repartos'}}">Volver</a>
+    </div>
+</template>

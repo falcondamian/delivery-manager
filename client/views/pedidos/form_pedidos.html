@@ -1,0 +1,89 @@
+<template name="form_pedidos">
+    <form>
+
+        <div class="form-group">
+            <label for="input_hora">Hora</label>
+            <div id="datetimepicker" class="input-group">
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-time"></span>
+                </span>
+                <input id="input_hora" class="form-control" type="text" value="{{hora}}" placeholder="Hora"/>                                              
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="input_cliente">Cliente</label>
+            
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-star"></span>
+                </span>               
+                <select class="form-control" id="input_cliente" value="{{clienteId}}">       
+                    <option selected>Seleccione cliente</option>
+                    {{#each clientes}}
+                        <option {{selected ../clienteId _id}} value={{_id}}>{{nombre}}</option>
+                    {{/each}}            
+                </select>
+            </div>
+        </div>
+
+        <h4>Productos</h4>
+        <div class="table-responsive">
+            <table class="table table-hover table-condensed table-bordered">
+                <thead>                        
+                    <tr>
+                        <th>Producto</th>
+                        <th>Cantidad</th>      
+                        <th>Observaciones</th>                      
+                    </tr>
+                </thead>
+                <tbody>
+                {{#each indexedArray productosAnadidos}}
+                    <tr>
+                        <td>{{objetoProducto producto}}</td>
+                        <td>{{cantidad}}</td>  
+                        <td>{{observaciones}}</td>
+                        <td><a class="btn btn-danger btn-xs" href="" id="deleteProducto">Borrar</a></td>
+                    </tr>
+                {{/each}}
+                </tbody>
+           </table>
+        </div>
+
+        <div class="form-group">           
+            <label for="input_cliente">Producto</label>
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-th"></span>
+                </span>               
+                <select class="form-control" id="input_producto">       
+                    <option selected>Seleccione producto</option>
+                    {{#each productosDisponibles}}
+                        <option {{selected ../productoId _id}} value={{_id}}>{{nombre}}</option>
+                    {{/each}}            
+                </select>
+            </div>            
+        </div>
+
+        <div class="form-group">
+            <label for="input_cantidad">Cantidad</label>
+            <div class="input-group">                
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-oil"></span>
+                </span>               
+                <input type="number" class="form-control"
+                    placeholder="Introduzca cantidad"
+                    id="input_cantidad">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="input_observaciones">Observaciones</label>
+            <div class="input-group">
+                <textarea class="form-control"
+                    id="input_observaciones" rows="3" cols="40"></textarea>                          
+            </div>
+        </div>
+
+        <button type="button" class="btn btn-primary btn-xs pull-right" id="anadirProducto">Añadir producto</button>        
+    </form>
+</template>

@@ -1,0 +1,9 @@
+<template name="pedidosRepartidor">
+  <div class="posts">
+    {{#each pedidosRepartidor}}
+      {{> pedido}}
+    {{else}}
+	  <h3>No se han encontrado pedidos para hoy.</h3>
+	{{/each}}
+  </div>
+</template>

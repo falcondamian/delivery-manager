@@ -1,0 +1,8 @@
+<template name="new_pedidos">
+    <div class="container">
+        <h3>Nuevo pedido</h3>
+        {{> form_pedidos}}
+        <button type="button" class="btn btn-primary btn-xs" id="save">Guardar</button>
+        <a class="btn btn-default btn-xs"  href="{{pathFor 'pedidos' _id=this.reparto._id}}">Volver</a>
+    </div>
+</template>
