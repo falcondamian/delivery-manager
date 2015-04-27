@@ -25,6 +25,6 @@ Template.form_reparto.helpers ({
 
 Template.form_reparto.rendered = function() {
 
-    $('#datetimepicker').datetimepicker({format:'DD/MM/YYYY', defaultDate: '12/10/2013'});
+    $('#datetimepicker').datetimepicker({format:'DD/MM/YYYY'});
 }
 

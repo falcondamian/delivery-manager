@@ -12,7 +12,7 @@ Template.new_pedidos.events ({
     'click #save': function(evt, tpl) {
         evt.preventDefault();
 
-        var new_pedidos = {
+        var new_pedido = {
             hora: tpl.find('#input_hora').value,
             clienteId: tpl.find('#input_cliente').value,            
             entregado: false,
@@ -20,8 +20,13 @@ Template.new_pedidos.events ({
             repartoId: this.reparto._id
         };
 
+        var errors = validatePedido(new_pedido);
+        console.log(errors);
+        if (errors.hora || errors.clienteId || errors.repartoId)
+          return Session.set('pedidosSubmitErrors', errors);
+
         // the method returns the new object id after saving it into the db
-        Meteor.call('insert_pedidos', new_pedidos);
+        Meteor.call('insert_pedidos', new_pedido);
         Router.go('/repartos/' + this.reparto._id + '/pedidos');
     }
 

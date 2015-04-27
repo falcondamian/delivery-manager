@@ -15,7 +15,7 @@ Template.new_reparto.events ({
 
         var errors = validateReparto(new_reparto);
         if (errors.fecha || errors.rutaId || errors.repartidorId)
-          return Session.set('repartosSubmitErrors', errors);
+          return Session.set('pedidosSubmitErrors', errors);
         
         Meteor.call('insert_reparto', new_reparto);
         Router.go('repartos');

@@ -1,5 +1,7 @@
 Template.form_pedidos.created = function() {
 
+    Session.set('pedidosSubmitErrors', {});
+
     if (this.data.productos) {
         
         Session.set('productosAnadidos', this.data.productos);
@@ -22,6 +24,14 @@ Template.form_pedidos.helpers ({
 
     productosAnadidos : function() {
         return Session.get('productosAnadidos');
+    },
+
+    errorMessage: function(field) {
+        return Session.get('pedidosSubmitErrors')[field];
+    },
+
+    errorClass: function (field) {
+        return !!Session.get('pedidosSubmitErrors')[field] ? 'has-error' : '';
     }
 
 });
@@ -37,6 +47,10 @@ Template.form_pedidos.events ({
             cantidad: tpl.find('#input_cantidad').value,
             observaciones: tpl.find('#input_observaciones').value
         };
+
+        var errors = validateProductoPedido(newPedido);
+        if (errors.producto || errors.cantidad)
+          return Session.set('pedidosSubmitErrors', errors);
 
         var productosAnadidos = Session.get('productosAnadidos').slice();
         productosAnadidos.push(newPedido);
