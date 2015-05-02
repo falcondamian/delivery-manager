@@ -17,8 +17,14 @@ Template.new_reparto.events ({
         if (errors.fecha || errors.rutaId || errors.repartidorId)
           return Session.set('pedidosSubmitErrors', errors);
         
-        Meteor.call('insert_reparto', new_reparto);
-        Router.go('repartos');
+        Meteor.call('insert_reparto', new_reparto, function(error, result) {
+            
+            if (error) {                
+                return throwError(error.reason);
+            } else {
+                Router.go('repartos');
+            }
+        });        
     }
 
 });

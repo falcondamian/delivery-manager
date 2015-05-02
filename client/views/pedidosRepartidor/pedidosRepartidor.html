@@ -1,9 +1,14 @@
 <template name="pedidosRepartidor">
-  <div class="posts">
-    {{#each pedidosRepartidor}}
-      {{> pedido}}
-    {{else}}
-	  <h3>No se han encontrado pedidos para hoy.</h3>
-	{{/each}}
+	<div class="form-group">
+		<form>	             
+      <input type="text" class="form-control" placeholder="Buscar" id="filter_field">
+	  </form>
+    </div>
+  	<div class="posts">
+    	{{#each pedidosRepartidor}}
+      	{{> pedido}}
+    	{{else}}
+	  		<h3>No se han encontrado pedidos para hoy.</h3>
+		{{/each}}
   </div>
 </template>

@@ -5,7 +5,7 @@
   -ms-border-radius: 3px;
   -o-border-radius: 3px;
   border-radius: 3px;
-  padding: 10px;
+  padding: 6px;
   margin-bottom: 10px;
   -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
   -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
@@ -47,11 +47,15 @@
     margin: 7px 12px 0 0;
     float: left; }
   .pedido .pedido-content {
-    float: left; }
+    float: left; 
+    width: 100%}
     .pedido .pedido-content h3 {
       margin: 0;
       line-height: 1.4;
       font-size: 18px; }
+    .pedido .pedido-content ul {
+      margin-bottom: 0;
+      margin-top: 0; }
       .pedido .pedido-content h3 a {
         display: inline-block;
         margin-right: 5px; }

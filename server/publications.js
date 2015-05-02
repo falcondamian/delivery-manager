@@ -15,7 +15,7 @@ Meteor.publish('clientesOfRuta', function(rutaId) {
 });
 
 Meteor.publish('repartos', function() {
-    return repartos.find({},{sort: {fecha: -1}});
+    return repartos.find();
 });
 
 Meteor.publish('pedido', function(id) {  

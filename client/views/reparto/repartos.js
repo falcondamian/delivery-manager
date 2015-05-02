@@ -1,7 +1,8 @@
 Template.repartos.helpers ({
 
-    repartos: function() {
-        return repartos.find().fetch();
+    repartos: function() {    
+        //Ha habido que poner la ordenacion aqui    
+        return repartos.find({},{sort: {fecha: -1}}).fetch();
     }
 
 });

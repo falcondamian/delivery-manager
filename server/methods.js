@@ -68,8 +68,19 @@ Meteor.methods({
  
     insert_reparto: function(object_reparto) {         
         check(Meteor.userId(), String);
-        var repartoId = repartos.insert(object_reparto); 
-        return repartoId; 
+
+        //Validamos si existe un reparto ya creado para ese dia, repartidor y ruta
+        var repartoExistente = repartos.find({rutaId : object_reparto.rutaId, repartidorId : object_reparto.repartidorId, fecha : object_reparto.fecha}).fetch();
+
+        if(repartoExistente && repartoExistente[0]) {
+
+            throw new Meteor.Error('existenRepartoMismosDatos', "Ya existe un reparto para este repartidor en la misma ruta y fecha");
+
+        } else {
+
+             var repartoId = repartos.insert(object_reparto); 
+            return repartoId;
+        }        
     }, 
  
     delete_selected_clientes: function(selectedIds) { 

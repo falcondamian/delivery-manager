@@ -52,7 +52,6 @@ Template.pedidos.events ({
         yesterday.setDate(yesterday.getDate() - 1);  
 
         Meteor.call('copy_pedidos', this, yesterday, function(error, result) {
-          // display the error to the user and abort
           if (error)
             return throwError(error.reason);  
         });
