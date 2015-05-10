@@ -8,13 +8,11 @@ Template.rutas.helpers ({
 
 Template.rutas.events ({
 
-    // event handlers
-    // delete the selected object
-    'click #delete': function(evt, tpl) {
-        Meteor.call('delete_rutas', this._id);
+    'click #deleteModal': function(evt, tpl) {
+        
+        Session.set('rutaSeleccionada', this);
     },
 
-    // filter function
     'keyup #filter_field': function (evt, tpl) {
         $("td").filter(function () {
             var word = tpl.find('#filter_field').value;
@@ -29,20 +27,20 @@ Template.rutas.events ({
             }
             return false;
         })
-    },
+    }
 
-    'click #checkAll': function (evt, tpl) {
-        $('.checkthis').prop('checked', evt.target.checked);
-    },
+});
 
-    'click #deleteAll': function () {
-        // get the id of the checked rows
-        $('input:checkbox:checked').filter(function(){
-            var selectedIds = $(this).closest('tr').attr('id');
-            if (selectedIds !== undefined) {
-                Meteor.call('delete_selected_rutas', selectedIds);
-            }
-        });
+Template.rutasModal.data = function() { 
+
+  return Session.get('rutaSeleccionada');
+}
+
+Template.rutasModal.events ({
+  
+    'click #delete': function(evt, tpl) {
+
+        Meteor.call('delete_rutas', this._id);
     }
 
 });

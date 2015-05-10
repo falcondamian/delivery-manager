@@ -1,11 +1,11 @@
 <template name="form_productos">
     <form>
-        <div class="form-group {{errorClass 'nombre'}}">
+        <div class="width30 form-group {{errorClass 'nombre'}}">
             <label class="control-label" for="input_nombre">Nombre</label>
             <input type="text" class="form-control" placeholder="Introduzca nombre" id="input_nombre"     value="{{nombre}}">
             <span class="help-block">{{errorMessage 'nombre'}}</span>
         </div>
-        <div class="form-group {{errorClass 'descripcion'}}">
+        <div class="width60 form-group {{errorClass 'descripcion'}}">
             <label class="control-label" for="input_descripcion">Descripción</label>
             <input type="text" class="form-control" placeholder="Introduzca descripción"
                 id="input_descripcion" value="{{descripcion}}">

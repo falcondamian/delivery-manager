@@ -63,6 +63,10 @@ Meteor.methods({
  
     delete_reparto: function(repartoId) {
         check(Meteor.userId(), String); 
+
+        //eliminamos posibles pedidos
+        pedidos.remove({repartoId: repartoId});
+
         repartos.remove(repartoId); 
     }, 
  
@@ -137,6 +141,10 @@ Meteor.methods({
  
     delete_rutas: function(rutasId) { 
         check(Meteor.userId(), String);
+
+        //eliminamos posibles clientes
+        clientes.remove({rutaId: rutasId});
+
         rutas.remove(rutasId); 
     }, 
  

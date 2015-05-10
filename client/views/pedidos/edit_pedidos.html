@@ -2,7 +2,9 @@
     <div class="container">
         <h3>Editar pedido</h3>
         {{> form_pedidos}}
-        <button type="button" class="btn btn-primary btn-xs" id="save">Guardar</button>
-         <a class="btn btn-default btn-xs" href="{{pathFor 'pedidos' _id=this.repartoId}}">Volver</a>
+        <div class="control-group pull-right">	        
+	        <a class="btn btn-default btn-xs" href="{{pathFor 'pedidos' _id=this.repartoId}}">Volver</a>
+	        <button type="button" class="btn btn-primary btn-xs" id="save">Guardar</button>
+        </div>
     </div>
 </template>

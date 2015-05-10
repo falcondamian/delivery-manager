@@ -7,14 +7,11 @@ Template.pedidos.helpers ({
 });
 
 Template.pedidos.events ({
-
-    // event handlers
-    // delete the selected object
+    
     'click #delete': function(evt, tpl) {
         Meteor.call('delete_pedidos', this._id);
     },
-
-    // filter function
+    
     'keyup #filter_field': function (evt, tpl) {
         $("td").filter(function () {
             var word = tpl.find('#filter_field').value;
@@ -29,21 +26,7 @@ Template.pedidos.events ({
             }
             return false;
         })
-    },
-
-    'click #checkAll': function (evt, tpl) {
-        $('.checkthis').prop('checked', evt.target.checked);
-    },
-
-    'click #deleteAll': function () {
-        // get the id of the checked rows
-        $('input:checkbox:checked').filter(function(){
-            var selectedIds = $(this).closest('tr').attr('id');
-            if (selectedIds !== undefined) {
-                Meteor.call('delete_selected_pedidos', selectedIds);
-            }
-        });
-    },
+    },    
 
     'click #copyPreviousDay': function () {
         
@@ -55,6 +38,11 @@ Template.pedidos.events ({
           if (error)
             return throwError(error.reason);  
         });
+    },
+
+    'click #selectDate': function(evt, tpl) {
+        
+        Session.set('fechaSeleccionada', null);
     }    
 
 });

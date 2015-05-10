@@ -104,3 +104,14 @@
   margin-bottom: 5px;
   pointer-events: auto;
 }
+
+.titulo {
+  color: #4cae4c;
+}
+
+.width30 {
+  width: 30%;
+}
+.width60 {
+  width: 60%;
+}

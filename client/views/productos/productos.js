@@ -7,15 +7,14 @@ Template.productos.helpers ({
 });
 
 Template.productos.events ({
+    
+    'click #deleteModal': function(evt, tpl) {
 
-    // event handlers
-    // delete the selected object
-    'click #delete': function(evt, tpl) {
-        Meteor.call('delete_productos', this._id);
+        Session.set('productoSeleccionado', this);
     },
-
-    // filter function
+    
     'keyup #filter_field': function (evt, tpl) {
+
         $("td").filter(function () {
             var word = tpl.find('#filter_field').value;
             if (word !== '') {
@@ -29,20 +28,20 @@ Template.productos.events ({
             }
             return false;
         })
-    },
+    }
 
-    'click #checkAll': function (evt, tpl) {
-        $('.checkthis').prop('checked', evt.target.checked);
-    },
+});
 
-    'click #deleteAll': function () {
-        // get the id of the checked rows
-        $('input:checkbox:checked').filter(function(){
-            var selectedIds = $(this).closest('tr').attr('id');
-            if (selectedIds !== undefined) {
-                Meteor.call('delete_selected_productos', selectedIds);
-            }
-        });
+Template.productosModal.data = function() { 
+
+  return Session.get('productoSeleccionado');
+}
+
+Template.productosModal.events ({
+  
+    'click #delete': function(evt, tpl) {
+
+        Meteor.call('delete_productos', this._id);
     }
 
 });
