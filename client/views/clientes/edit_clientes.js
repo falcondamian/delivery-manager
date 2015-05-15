@@ -18,6 +18,10 @@ Template.edit_clientes.events ({
             telefono: tpl.find('#input_telefono').value,
         };
 
+        var errors = validateCliente(updated_clientes);
+        if (errors.nombre || errors.direccion)
+          return Session.set('clientesSubmitErrors', errors);
+
         // the method returns the new object id after saving it into the db
         Meteor.call('update_clientes', this._id, updated_clientes);
         Router.go('/rutas/' + this.rutaId + '/clientes');

@@ -34,7 +34,7 @@
                                 &nbsp;                           
                                 <a class="btn btn-primary btn-xs" href="{{pathFor 'edit_clientes'}}"  id="edit"><i class="fa fa-edit"></i>&nbsp;Editar</a>
                                 &nbsp;                           
-                                <a class="btn btn-danger btn-xs" href="" id="delete"><i class="fa fa-trash-o"></i>&nbsp;Eliminar</a>
+                                <a id="deleteModal" class="btn btn-danger btn-xs" href="#myModal" data-toggle="modal"><i class="fa fa-trash-o"></i>&nbsp;Eliminar</a>
                             </td>
                         </tr>
                     {{/each}}
@@ -44,4 +44,30 @@
             <a class="btn btn-success btn-xs" href="{{pathFor 'new_clientes'}}"><i class="fa fa-plus"></i>&nbsp;Nuevo cliente</a>
             <a class="btn btn-default btn-xs"  href="{{pathFor 'rutas'}}"><i class="fa fa-mail-reply"></i>&nbsp;Volver</a>
         </div>
+
+        {{> clientesModal}}
+
+</template>
+
+<template name="clientesModal">
+    {{#with data}}
+    <div id="myModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Confirmación</h4>
+                </div>
+                <div class="modal-body">
+                    <p>¿ Desea eliminar el cliente '{{nombre}}' ?</p>
+                    <p class="text-warning"><small>Si elimina el cliente no estará disponible para asignarle pedidos.</small></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    <button id="delete" type="button" class="btn btn-danger" data-dismiss="modal">Eliminar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/with}}
 </template>

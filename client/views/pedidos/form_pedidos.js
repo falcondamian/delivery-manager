@@ -12,15 +12,11 @@ Template.form_pedidos.created = function() {
     }
 }
 
-Template.form_pedidos.helpers ({
+Template.form_pedidos.helpers ({  
 
     clientes: function() {
         return clientes.find().fetch();
-    },
-    
-    productosDisponibles: function() {
-        return productos.find().fetch();
-    },
+    },  
 
     productosAnadidos : function() {
         return Session.get('productosAnadidos');
@@ -39,7 +35,57 @@ Template.form_pedidos.helpers ({
 
 Template.form_pedidos.events ({
    
-	'click #anadirProducto': function(evt, tpl) {
+    'click #addProducto': function(evt, tpl) {
+        evt.preventDefault();
+
+        tpl.find('#input_producto').value = '';
+        tpl.find('#input_cantidad').value = '';
+        tpl.find('#input_observaciones').value = '';
+    },
+
+	'click #deleteProducto': function(evt, tpl) {
+        evt.preventDefault();
+
+        var productosAnadidos = Session.get('productosAnadidos').slice();
+        productosAnadidos.splice(this.index - 1, 1); 
+        Session.set('productosAnadidos', productosAnadidos);
+    }
+
+});
+
+Template.form_pedidos.rendered = function() {
+    
+    $('#datetimepicker').datetimepicker({format:'HH:mm'});
+}
+
+Template.addProductosModal.created = function() {
+
+  Session.set('modalSelectProductoSubmitErrors', {});
+}
+
+Template.addProductosModal.helpers ({
+
+    clientes: function() {
+        return clientes.find().fetch();
+    },
+    
+    productosDisponibles: function() {
+        return productos.find().fetch();
+    },
+
+    errorMessage: function(field) {
+        return Session.get('modalSelectProductoSubmitErrors')[field];
+    },
+
+    errorClass: function (field) {
+        return !!Session.get('modalSelectProductoSubmitErrors')[field] ? 'has-error' : '';
+    }
+
+});
+
+Template.addProductosModal.events ({
+   
+    'click #anadirProducto': function(evt, tpl) {
         evt.preventDefault();
 
         var newPedido = {
@@ -55,20 +101,7 @@ Template.form_pedidos.events ({
         var productosAnadidos = Session.get('productosAnadidos').slice();
         productosAnadidos.push(newPedido);
         Session.set('productosAnadidos', productosAnadidos);
-    },
-
-    'click #deleteProducto': function(evt, tpl) {
-        evt.preventDefault();
-
-        var productosAnadidos = Session.get('productosAnadidos').slice();
-        productosAnadidos.splice(this.index - 1, 1); 
-        Session.set('productosAnadidos', productosAnadidos);
     }
 
 });
-
-Template.form_pedidos.rendered = function() {
-    
-    $('#datetimepicker').datetimepicker({format:'HH:mm'});
-}
 

@@ -49,44 +49,65 @@
                 {{/each}}
                 </tbody>
            </table>
-        </div>
+        </div>        
 
-        <div class="form-group {{errorClass 'producto'}}">           
-            <label for="input_cliente">Producto</label>
-            <div class="input-group">
-                <span class="input-group-addon">
-                    <span class="glyphicon glyphicon-th"></span>
-                </span>               
-                <select class="form-control" id="input_producto">       
-                    <option value="" selected>Seleccione producto</option>
-                    {{#each productosDisponibles}}
-                        <option {{selected ../productoId _id}} value={{_id}}>{{nombre}}</option>
-                    {{/each}}            
-                </select>
-            </div>
-            <span class="help-block">{{errorMessage 'producto'}}</span>            
-        </div>
-
-        <div class="form-group {{errorClass 'cantidad'}}">
-            <label for="input_cantidad">Cantidad</label>
-            <div class="input-group">                
-                <span class="input-group-addon">
-                    <span class="glyphicon glyphicon-oil"></span>
-                </span>               
-                <input type="number" class="form-control"
-                    placeholder="Introduzca cantidad"
-                    id="input_cantidad">
-            </div>
-            <span class="help-block">{{errorMessage 'cantidad'}}</span>
-        </div>
-        <div class="form-group">
-            <label for="input_observaciones">Observaciones</label>
-            <div class="input-group">
-                <textarea class="form-control"
-                    id="input_observaciones" rows="3" cols="40"></textarea>                          
-            </div>
-        </div>
-
-        <button type="button" class="btn btn-primary btn-xs" id="anadirProducto">Añadir producto</button>        
+        <button id="addProducto" href="#myModal" data-toggle="modal" type="button" class="btn btn-primary btn-xs">Añadir producto</button>        
     </form>
+
+    {{> addProductosModal}}
+
+</template>
+
+<template name="addProductosModal">    
+    <div id="myModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Añadir producto</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group {{errorClass 'producto'}}">           
+                        <label for="input_cliente">Producto</label>
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-th"></span>
+                            </span>               
+                            <select class="form-control" id="input_producto">       
+                                <option value="" selected>Seleccione producto</option>
+                                {{#each productosDisponibles}}
+                                    <option {{selected ../productoId _id}} value={{_id}}>{{nombre}}</option>
+                                {{/each}}            
+                            </select>
+                        </div>
+                        <span class="help-block">{{errorMessage 'producto'}}</span>            
+                    </div>
+
+                    <div class="form-group {{errorClass 'cantidad'}}">
+                        <label for="input_cantidad">Cantidad</label>
+                        <div class="input-group">                
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-oil"></span>
+                            </span>               
+                            <input type="number" class="form-control"
+                                placeholder="Introduzca cantidad"
+                                id="input_cantidad">
+                        </div>
+                        <span class="help-block">{{errorMessage 'cantidad'}}</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="input_observaciones">Observaciones</label>
+                        <div class="input-group">
+                            <textarea class="form-control"
+                                id="input_observaciones" rows="3" cols="40"></textarea>                          
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    <button id="anadirProducto" type="button" class="btn btn-success" data-dismiss="modal">Añadir</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </template>

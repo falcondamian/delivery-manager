@@ -8,11 +8,13 @@ Template.clientes.helpers ({
 
 Template.clientes.events ({
 
-    'click #delete': function(evt, tpl) {
-        Meteor.call('delete_clientes', this._id);
+    'click #deleteModal': function(evt, tpl) {
+        
+        Session.set('clienteSeleccionado', this);
     },
 
     'keyup #filter_field': function (evt, tpl) {
+        
         $("td").filter(function () {
             var word = tpl.find('#filter_field').value;
             if (word !== '') {
@@ -26,6 +28,20 @@ Template.clientes.events ({
             }
             return false;
         })
+    }
+
+});
+
+Template.clientesModal.data = function() { 
+
+  return Session.get('clienteSeleccionado');
+}
+
+Template.clientesModal.events ({
+  
+    'click #delete': function(evt, tpl) {
+
+        Meteor.call('delete_clientes', this._id);
     }
 
 });

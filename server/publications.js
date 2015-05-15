@@ -23,6 +23,6 @@ Meteor.publish('pedido', function(id) {
 });
 
 Meteor.publish('pedidosOfReparto', function(repartoId) {
-    return pedidos.find({repartoId: repartoId}, {sort: {hora: 1}});
+    return pedidos.find({repartoId: repartoId});
 });
 

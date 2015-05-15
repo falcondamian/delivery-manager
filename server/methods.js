@@ -43,11 +43,11 @@ Meteor.methods({
                 }  
             } else {
 
-                throw new Meteor.Error('noExistenPedidosAnterior', "No existen pedidos del día anterior para este repartidor y ruta");
+                throw new Meteor.Error('noExistenPedidosAnterior', "No existen pedidos del día " + moment(fechaOrigen).format('DD/MM/YYYY') + " para este repartidor y ruta");
             }          
         }  else {
 
-            throw new Meteor.Error('noExisteRepartoAnterior', "No existe un reparto del día anterior para este repartidor y ruta");
+            throw new Meteor.Error('noExisteRepartoAnterior', "No existe un reparto del día " + moment(fechaOrigen).format('DD/MM/YYYY') + " para este repartidor y ruta");
         }      
     }, 
  

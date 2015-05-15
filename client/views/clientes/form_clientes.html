@@ -1,18 +1,20 @@
 <template name="form_clientes">
     <form>
-        <div class="width30 form-group">
+        <div class="width30 form-group {{errorClass 'nombre'}}">
             <label for="input_nombre">Nombre</label>
             <input type="text" class="form-control"
                 placeholder="Introduzca nombre"
                 id="input_nombre"
                 value="{{nombre}}">
+            <span class="help-block">{{errorMessage 'nombre'}}</span>
         </div>
-        <div class="width30 form-group">
+        <div class="width30 form-group {{errorClass 'direccion'}}">
             <label for="input_direccion">Dirección</label>
             <input type="text" class="form-control"
                 placeholder="Introduzca dirección"
                 id="input_direccion"
                 value="{{direccion}}">
+            <span class="help-block">{{errorMessage 'direccion'}}</span>
         </div>
         <div class="width30 form-group">
             <label for="input_telefono">Teléfono</label>

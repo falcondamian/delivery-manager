@@ -19,6 +19,10 @@ Template.new_clientes.events ({
             rutaId : this.ruta._id
         };
 
+        var errors = validateCliente(new_clientes);
+        if (errors.nombre || errors.direccion)
+          return Session.set('clientesSubmitErrors', errors);
+
         // the method returns the new object id after saving it into the db
         Meteor.call('insert_clientes', new_clientes);
         Router.go('/rutas/' + this.ruta._id + '/clientes');

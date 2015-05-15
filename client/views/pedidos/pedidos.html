@@ -1,6 +1,6 @@
 <template name="pedidos">
     <div class="container">
-        <h3>Pedidos ruta : {{objetoRuta rutaId}} Fecha: {{formateaFecha fecha}} Repartidor : {{objetoUsuario repartidorId}}</h3>
+        <h3 class="titulo">Pedidos <i class="fa fa-globe"></i>&nbsp;{{objetoRuta rutaId}} <i class="fa fa-calendar"></i>&nbsp;{{formateaFecha fecha}} <i class="fa fa-user"></i>&nbsp;{{objetoUsuario repartidorId}}</h3>
             <div class="table-responsive">
                 <table class="table table-hover table-condensed table-bordered">
                     <thead>
@@ -13,9 +13,9 @@
                                                    placeholder="Introduzca texto"
                                                    id="filter_field">
                                                    <a class="btn btn-primary btn-xs"
-                                                href="" id="copyPreviousDay">Añadir pedidos día anterior</a>
+                                                href="" id="copyPreviousDay">Copiar pedidos ayer</a>
                                                     <a id="selectDate" class="btn btn-primary btn-xs"
-                                                href="#myModal" data-toggle="modal">Añadir pedidos otro día</a>
+                                                href="#selectDateModal" data-toggle="modal">Copiar pedidos otro día</a>
                                         </div>
                                 </form>
                             </th>
@@ -23,8 +23,7 @@
                         <tr>
                             <th>Hora</th>
                             <th>Cliente</th>
-                            <th>Productos</th>
-                            <th>Entregado</th>
+                            <th>Productos</th>                            
                             <th></th>
                         </tr>
                     </thead>
@@ -43,8 +42,7 @@
                                     </li>
                                 {{/each}}
                                 </ul>
-                            </td>
-                            <td>{{entregado}}</td>                            
+                            </td>                                             
                             <td>
                                 <a class="btn btn-default btn-xs" href="{{pathFor 'show_pedidos'}}"  id="show">Mostrar </a>
                             </td>
@@ -69,20 +67,29 @@
 
 <template name="pedidosModal">
     
-    <div id="myModal" class="modal fade">
+    <div id="selectDateModal" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title">Confirmación</h4>
+                    <h4 class="modal-title titulo">Copiar pedidos <i class="fa fa-globe"></i>&nbsp;{{objetoRuta rutaId}} <i class="fa fa-user"></i>&nbsp;{{objetoUsuario repartidorId}}</h4>
                 </div>
                 <div class="modal-body">
-                    <p>¿ Desea eliminar la ruta '{{nombre}}' ?</p>
-                    <p class="text-warning"><small>Si elimina esta ruta, además de no volver a estar disponible, también eliminará los clientes asociados a la misma.</small></p>
+                    <div class="width30 form-group {{errorClass 'fecha'}}">           
+                        <label class="control-label" for="input_fecha">Fecha</label>
+                        <div id="datetimepicker" class="input-group">
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                            <input id="input_fecha" class="form-control" type="text" placeholder="Fecha"/>
+                        </div>
+                        <span class="help-block">{{errorMessage 'fecha'}}</span>
+                    </div> 
+                    <p class="text-warning"><small>Se copiarán los pedidos de la fecha que seleccione. No se perderán posibles pedidos que ya haya añadido.</small></p>                                     
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                    <button id="delete" type="button" class="btn btn-danger" data-dismiss="modal">Eliminar</button>
+                    <button id="copiar" type="button" class="btn btn-success">Copiar</button>
                 </div>
             </div>
         </div>
