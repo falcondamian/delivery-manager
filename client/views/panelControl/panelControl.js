@@ -1,15 +1,19 @@
-Template.pedidosRepartidor.helpers({
+Template.panelControl.helpers({
 
-	pedidosRepartidor: function() {
+    repartos: function() {
+        
+        return repartos.find({},{sort: {fecha: -1}}).fetch();
+    },
+
+	pedidosRepartidores: function() {
 
     	return pedidos.find().fetch();
   	}
 
 });
 
-Template.pedidosRepartidor.events ({    
-
-    // filter function
+Template.panelControl.events ({    
+    
     'keyup #filter_field': function (evt, tpl) {
         $(".pedido").filter(function () {
             var word = tpl.find('#filter_field').value;

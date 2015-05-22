@@ -1,4 +1,3 @@
-@ignore
 Feature: One-liner description of this feature
 
   As a [role]

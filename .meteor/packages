@@ -9,11 +9,10 @@ iron:router
 mizzao:bootstrap-3
 tsega:bootstrap3-datetimepicker
 momentjs:moment
-ian:accounts-ui-bootstrap-3
 accounts-password
 sacha:spin
 alanning:roles
 mrt:accounts-admin-ui-bootstrap-3
 fortawesome:fontawesome
-mike:mocha
 xolvio:cucumber
+useraccounts:bootstrap

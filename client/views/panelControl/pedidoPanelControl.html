@@ -1,8 +1,8 @@
-<template name="pedido">
+<template name="pedidoPanelControl">
   <div {{attributes}}>
     <div class="pedido-content">
 
-      <h3><span class="glyphicon glyphicon-time"></span> {{hora}} <span class="glyphicon glyphicon-star"></span> {{objetoCliente clienteId}} <span class="pull-right"><input type="checkbox" checked="{{entregado}}" name="checked"></span></h3>
+      <h3><span class="glyphicon glyphicon-time"></span> {{hora}} <span class="glyphicon glyphicon-star"></span> {{objetoCliente clienteId}}</h3>
 
       {{#unless entregado}}
         <p>     
@@ -13,7 +13,7 @@
                   {{objetoProducto producto}} 
                   {{#if observaciones}}
                     ({{observaciones}})
-                  {{/if}}                     
+                  {{/if}}                        
               </li>
           {{/each}}
           </ul>         

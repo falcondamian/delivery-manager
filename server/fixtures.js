@@ -1,3 +1,35 @@
+if (Meteor.users.find().count() === 0) {
+
+    var idUser = null;
+    idUser = Accounts.createUser({
+        username: "falcon",
+        email: "falcon@test.com",
+        password: "451987"
+    });
+    Roles.addUsersToRoles(idUser, ['admin','repartidor']);
+
+    idUser = Accounts.createUser({
+        username: "cuba",
+        email: "cuba@test.com",
+        password: "451987"
+    });
+    Roles.addUsersToRoles(idUser, ['repartidor']);
+
+    idUser = Accounts.createUser({
+        username: "juanlu",
+        email: "juanlu@test.com",
+        password: "451987"
+    });
+    Roles.addUsersToRoles(idUser, ['repartidor']);
+
+    idUser = Accounts.createUser({
+        username: "lucia",
+        email: "lucia@test.com",
+        password: "451987",
+    });
+    Roles.addUsersToRoles(idUser, ['repartidor']);
+}
+
 if (rutas.find().count() === 0) {
     for (var rutas_index = 0; rutas_index < 5; rutas_index++) {
         var rutaId = rutas.insert({
@@ -24,4 +56,6 @@ if (productos.find().count() === 0) {
         });
     }
 }
+
+
 

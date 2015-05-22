@@ -27,8 +27,8 @@ Meteor.methods({
         //Localizamos el reparto anterior
         var repartoRutaRepartidorFecha = repartos.find({rutaId : reparto.rutaId, repartidorId : reparto.repartidorId, fecha : fechaOrigen}).fetch();
         
-        if (repartoRutaRepartidorFecha && repartoRutaRepartidorFecha[0]) {
-            //Cogemos sus pedidos
+        if (repartoRutaRepartidorFecha && repartoRutaRepartidorFecha.length > 0) {
+            //Cojemos sus pedidos
             var pedidosOfReparto = pedidos.find({repartoId: repartoRutaRepartidorFecha[0]._id}).fetch();
             
             //Si tiene pedidos

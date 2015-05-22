@@ -33,7 +33,11 @@ UI.registerHelper('objetoProducto', function(idProducto) {
 UI.registerHelper('objetoUsuario', function(idUsuario) {
 
     var usuario = Meteor.users.findOne(idUsuario);
-    return usuario.username;
+    if(usuario) {
+        return usuario.username;
+    } else {
+        return '';
+    }    
 });
 
 UI.registerHelper('isAdminUser', function() {
