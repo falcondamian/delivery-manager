@@ -49,17 +49,17 @@
   .pedido .pedido-content {
     float: left; 
     width: 100%}
-    .pedido .pedido-content h3 {
+    .pedido .pedido-content h4 {
       margin: 0;
       line-height: 1.4;
       font-size: 18px; }
     .pedido .pedido-content ul {
       margin-bottom: 0;
       margin-top: 0; }
-      .pedido .pedido-content h3 a {
+      .pedido .pedido-content h4 a {
         display: inline-block;
         margin-right: 5px; }
-      .pedido .pedido-content h3 span {
+      .pedido .pedido-content h4 span {
         font-weight: normal;
         font-size: 16px;
         display: inline-block;}

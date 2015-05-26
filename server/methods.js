@@ -8,6 +8,11 @@ Meteor.methods({
     update_pedidos: function(id, object_pedidos) { 
         check(Meteor.userId(), String);
         pedidos.update({_id: id}, {$set: object_pedidos }); 
+    },
+
+    check_pedido: function(id, checked) { 
+        check(Meteor.userId(), String);
+        pedidos.update({_id: id}, {$set: {entregado: checked}});
     }, 
  
     delete_pedidos: function(pedidosId) {

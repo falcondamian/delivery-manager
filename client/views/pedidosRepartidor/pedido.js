@@ -23,7 +23,11 @@ Template.pedido.events({
 
     var checked = $(event.target).is(':checked');  
 
-    pedidos.update(this._id, {$set: {entregado: checked}});
+    Meteor.call('check_pedido', this._id, checked, function(error) {            
+        if (error) {                
+          return throwError(error.reason);
+        }
+    });
   }
 
 });

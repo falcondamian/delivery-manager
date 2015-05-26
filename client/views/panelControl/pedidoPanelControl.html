@@ -1,24 +1,19 @@
 <template name="pedidoPanelControl">
   <div {{attributes}}>
     <div class="pedido-content">
-
-      <h3><span class="glyphicon glyphicon-time"></span> {{hora}} <span class="glyphicon glyphicon-star"></span> {{objetoCliente clienteId}}</h3>
-
-      {{#unless entregado}}
-        <p>     
-          <ul>
-          {{#each productos}}
-              <li>
-                  {{cantidad}} 
-                  {{objetoProducto producto}} 
-                  {{#if observaciones}}
-                    ({{observaciones}})
-                  {{/if}}                        
-              </li>
-          {{/each}}
-          </ul>         
-        </p>
-      {{/unless}}
+      <h4>
+  		<div class="row">
+	  		<div class="col-md-8">
+	  			<i class="fa fa-clock-o"></i> {{hora}}
+	  			&nbsp;
+      			<i class="fa fa-star"></i> {{objetoCliente clienteId}}
+      		</div>
+	  		<div class="col-md-4 text-right">
+	  			<i class="fa fa-comments"></i>&nbsp;&nbsp;
+      			<i class="fa fa-server"></i>
+      		</div>
+		</div>      	
+      </h4>      
     </div>
   </div>
 </template>

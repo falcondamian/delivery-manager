@@ -22,6 +22,10 @@ Meteor.publish('repartos', function() {
     return repartos.find();
 });
 
+Meteor.publish('reparto', function(repartoId) {
+    return repartos.find({_id : repartoId});
+});
+
 Meteor.publish('repartosFecha', function(fechaFiltro) {
     return repartos.find({fecha : fechaFiltro});
 });

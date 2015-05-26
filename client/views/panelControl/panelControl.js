@@ -5,9 +5,9 @@ Template.panelControl.helpers({
         return repartos.find({},{sort: {fecha: -1}}).fetch();
     },
 
-	pedidosRepartidores: function() {
+	pedidosReparto: function(repartoId) {
 
-    	return pedidos.find().fetch();
+    	return pedidos.find({repartoId: repartoId}).fetch();
   	}
 
 });
