@@ -16,3 +16,11 @@ Template.pedidoPanelControl.helpers({
     	return attributes;
   	}
 });
+
+Template.pedidoPanelControl.events ({    
+    
+    'click #verPedidos': function (evt, tpl) {
+    	var idPedido = '#' + this._id;    	
+        $(idPedido).fadeToggle();
+    }
+});

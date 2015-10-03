@@ -115,3 +115,11 @@
 .width60 {
   width: 60%;
 }
+
+.cursor {
+  cursor: pointer;
+}
+
+.oculto {
+  display: none;
+}

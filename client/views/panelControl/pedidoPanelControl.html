@@ -1,19 +1,30 @@
 <template name="pedidoPanelControl">
   <div {{attributes}}>
-    <div class="pedido-content">
-      <h4>
+    <div class="pedido-content">      
   		<div class="row">
 	  		<div class="col-md-8">
-	  			<i class="fa fa-clock-o"></i> {{hora}}
-	  			&nbsp;
+	  			  <i class="fa fa-clock-o"></i> {{hora}}
+	  			  &nbsp;
       			<i class="fa fa-star"></i> {{objetoCliente clienteId}}
       		</div>
 	  		<div class="col-md-4 text-right">
-	  			<i class="fa fa-comments"></i>&nbsp;&nbsp;
-      			<i class="fa fa-server"></i>
-      		</div>
-		</div>      	
-      </h4>      
+	  			  <i class="fa fa-comments" title="Ver comentarios"></i>&nbsp;&nbsp;
+      			<i id="verPedidos" class="cursor fa fa-server" title="Ver pedidos"></i>
+    		</div>
+        <p id="{{_id}}" class="pedidos oculto">     
+          <ul>
+          {{#each productos}}
+              <li>
+                  {{cantidad}} 
+                  {{objetoProducto producto}} 
+                  {{#if observaciones}}
+                    ({{observaciones}})
+                  {{/if}}                     
+              </li>
+          {{/each}}
+          </ul>         
+        </p>
+		  </div>           
     </div>
   </div>
 </template>

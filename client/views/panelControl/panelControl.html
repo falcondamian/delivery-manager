@@ -1,27 +1,36 @@
 <template name="panelControl">
-	<div class="form-group">
-        <form>	             
-            <input type="text" class="form-control" placeholder="Buscar" id="filter_field">
-        </form>
-    </div>
+	        
+    <form class="form-inline">
+        <div id="seachbox" class="width30 input-group">            
+            <input style="border-radius: 4px;" type="text" class="form-control" placeholder="Buscar" id="filter_field">
+        </div>        
+        <div id="datetimepicker" class="input-group">
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+            </span>
+            <input id="input_fecha" class="form-control" type="text" value="{{formateaFecha fechaHoy}}" placeholder="Fecha"/>                                               
+        </div> 
+    </form>    
 
     <div class="row">      
         {{#each repartos}}
-            <div class="col-md-4" id="{{_id}}">
-                <div class="row">
-                  <div class="col-md-6"> <h3 class="titulo"><i class="fa fa-user"></i>&nbsp;{{objetoUsuario repartidorId}}</h3></div>
-                  <div class="col-md-6 text-right"><h3 class="titulo"><i class="fa fa-globe"></i>&nbsp;{{objetoRuta rutaId}}</h3></div>
+            <div class="col-md-3" id="{{_id}}">
+                <div class="row">                  
+                  <div class="col-md-6 text-right"><h4 class="titulo"><i class="fa fa-globe"></i>&nbsp;{{objetoRuta rutaId}}</h4></div>
+                  <div class="col-md-6"> <h4 class="titulo"><i class="fa fa-user"></i>&nbsp;{{objetoUsuario repartidorId}}</h4></div>
                 </div>
                 <p>
                     <div class="posts">
                         {{#each pedidosReparto _id}}
                             {{> pedidoPanelControl}}
                         {{else}}
-                            <h4>No se han encontrado pedidos para hoy.</h4>
+                            <h4>No tiene pedidos asignados.</h4>
                         {{/each}}
                     </div>
                 </p>
             </div>
+        {{else}}
+            <h4>No existen repartos para mostrar.</h4>
         {{/each}}  
     </div>
 </template>

@@ -8,7 +8,14 @@ Template.panelControl.helpers({
 	pedidosReparto: function(repartoId) {
 
     	return pedidos.find({repartoId: repartoId}).fetch();
-  	}
+  	},
+
+    fechaHoy: function() {
+        var today = new Date();
+        today.setHours(0,0,0,0);
+
+        return today;
+    }
 
 });
 
@@ -30,3 +37,12 @@ Template.panelControl.events ({
         })
     }
 });
+
+Template.panelControl.rendered = function() {
+
+    $('#datetimepicker').datetimepicker({format:'DD/MM/YYYY'})
+        .on('dp.change', function (ev) {
+            alert(ev.date);
+            console.log('Cambiar subscripcion con esta fecha nueva');  
+    });
+}
