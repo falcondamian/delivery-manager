@@ -13,7 +13,6 @@ sacha:spin
 alanning:roles
 mrt:accounts-admin-ui-bootstrap-3
 fortawesome:fontawesome
-xolvio:cucumber
 useraccounts:bootstrap
 standard-minifiers
 meteor-base
